@@ -15,5 +15,9 @@ public class ComputerEvent {
 		return actualTime;
 	}
 	
+	public ComputerEvents getEventType(){
+		return compEventType;
+	}
+	
 	
 }

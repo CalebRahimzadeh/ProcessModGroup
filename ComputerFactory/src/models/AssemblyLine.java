@@ -1,7 +1,10 @@
 package models;
 
+import events.ComputerEvent;
+
 public class AssemblyLine implements Runnable{
 
+	private ComputerEvent compEvent;
 	public AssemblyLine(){
 		
 	}
@@ -13,6 +16,10 @@ public class AssemblyLine implements Runnable{
 		//process mbo install 
 		//switch state
 		//repeat with different parts until finished
+	}
+	
+	private void processEvent(){
+		
 	}
 
 }

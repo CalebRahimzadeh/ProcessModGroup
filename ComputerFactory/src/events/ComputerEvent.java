@@ -1,11 +1,11 @@
 package events;
 
 public class ComputerEvent {
-	private final int computerId;
+	private final int COMPUTER_ID;
 	private ComputerEvents compEventType;
 	
 	public ComputerEvent(int id, ComputerEvents eventType){
-		this.computerId = id;
+		this.COMPUTER_ID = id;
 		this.compEventType = eventType;
 	}
 	

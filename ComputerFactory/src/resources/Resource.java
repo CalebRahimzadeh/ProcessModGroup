@@ -1,7 +1,7 @@
 package resources;
 
 public class Resource {
-	private static final Clock clock = new Clock();
+	private static final Clock CLOCK = new Clock();
 	
 	public Resource(){
 		

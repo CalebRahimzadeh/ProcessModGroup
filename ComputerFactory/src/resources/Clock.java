@@ -9,4 +9,8 @@ public class Clock {
 	public synchronized void incrementClock(double valToIncrement){
 		this.clockTime += valToIncrement;
 	}
+	
+	public double getCurrentTime(){
+		return this.clockTime;
+	}
 }

@@ -1,10 +1,13 @@
 package controllers;
 
 import java.time.Clock;
+import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import events.CompletedComputerEvent;
 import models.AssemblyLine;
+import resources.Resource;
 import userinterface.SimulationConfiguration;
 
 public class ComputerFactory {
@@ -30,6 +33,7 @@ public class ComputerFactory {
 //		} else{
 //			System.out.println("Invalid input: " + input);
 //		}
+		
 	}
 	
 	private long convertWorkHoursToMilli(){

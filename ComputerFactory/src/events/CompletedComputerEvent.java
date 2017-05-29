@@ -31,8 +31,8 @@ public class CompletedComputerEvent {
 
 	@Override
 	public String toString() {
-		return "CompletedComputerEvent [compEventType=" + compEventType.name() + ", computer=" + getCOMPUTER_ID() + ", clockTime="
-				+ clockTime + ", getCOMPUTER_ID()=" + getCOMPUTER_ID() + "]";
+		return "computerID: " + getCOMPUTER_ID() + "[compEventType: " + compEventType.name()  + ", clockTime= "
+				+ clockTime + "]";
 	}
 	
 	

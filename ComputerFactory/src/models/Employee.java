@@ -20,7 +20,7 @@ public class Employee {
 		ramEmployees = new Semaphore(ramEmpCnt);
 	}
 	
-	public static void ChooseEmployeeToAquire(ComputerEvents event) throws InterruptedException{
+	public static void ChooseEmployeeToAquire(ComputerEvents event) throws InterruptedException {
 		switch(event){
 		case STARTING:
 			System.out.println("Starting Comp Build");

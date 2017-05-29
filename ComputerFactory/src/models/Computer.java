@@ -31,9 +31,8 @@ public class Computer implements Runnable {
 	public void run() {
 		// might need to loop? idk might break it
 		while (future.size() != 0) {
-			ComputerEvents present = future.poll();
-			System.out.println("Comp: " + id + " Switched State: "+ present);
 			try {
+			ComputerEvents present = future.poll();
 				Employee.ChooseEmployeeToAquire(present);
 				Clock clock = Clock.getInstance();
 				double duration = calculateDuration(present);
@@ -46,11 +45,11 @@ public class Computer implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("wut");
 	}
 
 	private void addEventData(ComputerEvents present, double clockTime) {
 		CompletedComputerEvent completedEvent = new CompletedComputerEvent(this, present, clockTime);
+		System.out.println(completedEvent.toString());
 		if (present.equals(ComputerEvents.FINISHED)) {
 			Resource.incrementComputersCompleteCount();
 			Resource.addToCompletedEventList(completedEvent);

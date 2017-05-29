@@ -4,27 +4,29 @@ import events.ComputerEvents;
 
 public class Computer  implements Runnable {
 	private final int id;
-	private ComputerEvents compEventType;
+	private ComputerEvents currentEventType;
 	
-	public Computer(int id, ComputerEvents compEventType) {
+	public Computer(int id) {
 		this.id = id;
-		this.compEventType = compEventType;
+		this.currentEventType = ComputerEvents.STARTING;
 	}
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		//aquire mobo
+				//process mbo install 
+				//switch state
+				//repeat with different parts until finished
 	}
 
 	public double calculateDuration(){
-		double duration = compEventType.getAvgDuration();
+		double duration = currentEventType.getAvgDuration();
 		double actualTime = (-Math.log(1 - Math.random()) * duration);
 		return actualTime;
 	}
 	
 	public ComputerEvents getEventType(){
-		return compEventType;
+		return currentEventType;
 	}
 
 

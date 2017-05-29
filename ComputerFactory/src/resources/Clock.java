@@ -18,11 +18,11 @@ public final class Clock {
 		return instance;
 	}
 	
-	public static synchronized void incrementClock(double valToIncrement){
+	public synchronized void incrementClock(double valToIncrement){
 		clockTime += valToIncrement;
 	}
 	
-	public static double getCurrentTime(){
+	public double getCurrentTime(){
 		return clockTime;
 	}
 }

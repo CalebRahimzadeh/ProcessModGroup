@@ -2,21 +2,19 @@ package events;
 
 import models.Computer;
 
-public class ComputerEvent {
-	private final int COMPUTER_ID;
+public class CompletedComputerEvent {
 	private final ComputerEvents compEventType;
 	private final Computer computer;
 	private final double clockTime;
 	
-	public ComputerEvent(int id, Computer comp, ComputerEvents eventType, double clockTime){
-		this.COMPUTER_ID = id;
+	public CompletedComputerEvent(Computer comp, ComputerEvents eventType, double clockTime){
 		this.compEventType = eventType;
 		this.computer = comp;
 		this.clockTime = clockTime;
 	}
 
 	public int getCOMPUTER_ID() {
-		return COMPUTER_ID;
+		return computer.getID();
 	}
 
 	public ComputerEvents getCompEventType() {

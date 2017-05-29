@@ -3,7 +3,7 @@ package models;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import events.ComputerEvent;
+import events.CompletedComputerEvent;
 import resources.Clock;
 
 public class AssemblyLine implements Runnable{
@@ -25,13 +25,10 @@ public class AssemblyLine implements Runnable{
 	public void run() {
 		//Generates a computer until clock limit is hit;
 		int idIncrementer = 0;
-		while(Clock.getCurrentTime() < RUN_LIMIT){
+		while(Clock.getInstance().getCurrentTime() < RUN_LIMIT){
 			compPool.submit(new Computer(idIncrementer));
 			idIncrementer++;
 		}
-		//new comp
-		//submit comp
-		
 	}
 	
 

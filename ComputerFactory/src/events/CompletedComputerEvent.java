@@ -28,6 +28,13 @@ public class CompletedComputerEvent {
 	public double getClockTime() {
 		return clockTime;
 	}
+
+	@Override
+	public String toString() {
+		return "CompletedComputerEvent [compEventType=" + compEventType.name() + ", computer=" + getCOMPUTER_ID() + ", clockTime="
+				+ clockTime + ", getCOMPUTER_ID()=" + getCOMPUTER_ID() + "]";
+	}
+	
 	
 	
 }

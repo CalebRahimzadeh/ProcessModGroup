@@ -23,6 +23,7 @@ public class Employee {
 	public static void ChooseEmployeeToAquire(ComputerEvents event) throws InterruptedException{
 		switch(event){
 		case STARTING:
+			System.out.println("Starting Comp Build");
 			break;
 		case FINISHED_MOTHERBOARD:
 			aquireMotherboardEmployee();
@@ -37,6 +38,7 @@ public class Employee {
 			aquireRAMEmployee();
 			break;
 		case FINISHED:
+			System.out.println("Finished Comp Build");
 			break;
 		}
 	}
@@ -64,33 +66,41 @@ public class Employee {
 	
 	public static void aquireMotherboardEmployee() throws InterruptedException{
 		moboEmployees.acquire();
+		System.out.println("Aquired motherboard Employee.");
 	}
 	
 	public static void releaseMotherboardEmployee(){
 		moboEmployees.release();
+		System.out.println("Released motherboard Employee.");
 	}
 	
 	public static void aquireProcessorEmployee() throws InterruptedException{
 		processorEmployees.acquire();
+		System.out.println("Aquired Processor Employee.");
 	}
 	
 	public static void releaseProcessorEmployee(){
 		processorEmployees.release();
+		System.out.println("released Processor Employee.");
 	}
 	
 	public static void aquireHDDEmployee() throws InterruptedException{
 		hddEmployees.acquire();
+		System.out.println("Aquired HDD Employee.");
 	}
 	
 	public static void releaseHDDEmployee(){
 		hddEmployees.release();
+		System.out.println("Aquired HDD Employee.");
 	}
 	
 	public static void aquireRAMEmployee() throws InterruptedException{
 		ramEmployees.acquire();
+		System.out.println("Aquired RAM Employee.");
 	}
 	
 	public static void releaseRAMEmployee(){
 		ramEmployees.release();
+		System.out.println("Release RAM Employee.");
 	}
 }

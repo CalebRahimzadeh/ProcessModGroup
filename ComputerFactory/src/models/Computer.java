@@ -1,11 +1,31 @@
 package models;
 
-public class Computer {
-	private final int compRevenue = 500;
-	private final int totalPartExpense = 250;
+import events.ComputerEvents;
+
+public class Computer  implements Runnable {
 	private final int id;
+	private ComputerEvents compEventType;
 	
-	public Computer(int id){
+	public Computer(int id, ComputerEvents compEventType) {
 		this.id = id;
+		this.compEventType = compEventType;
 	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public double calculateDuration(){
+		double duration = compEventType.getAvgDuration();
+		double actualTime = (-Math.log(1 - Math.random()) * duration);
+		return actualTime;
+	}
+	
+	public ComputerEvents getEventType(){
+		return compEventType;
+	}
+
+
 }

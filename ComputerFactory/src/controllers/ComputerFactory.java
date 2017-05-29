@@ -32,11 +32,6 @@ public class ComputerFactory {
 //		}
 	}
 	
-	
-	private void generateComputers(){
-		
-	}
-	
 	private long convertWorkHoursToMilli(){
 		final long MILLI_IN_ONE_HOUR = 3600000;
 		final int WEEKLY_WORK_DAYS_TO_SIM = 5;

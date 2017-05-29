@@ -18,7 +18,7 @@ public class AssemblyLine implements Runnable{
 	public AssemblyLine(long limit){
 		// TODO: change limit from milli to minutes 
 		Employee emp = new Employee(5,2,1,2);
-		this.RUN_LIMIT = 100;//limit; //disable this for debug
+		this.RUN_LIMIT = limit; //disable this for debug
 		 this.compPool = Executors.newFixedThreadPool(COMPS_TO_PROCESS_AT_A_TIME);
 		 
 	}
@@ -32,7 +32,7 @@ public class AssemblyLine implements Runnable{
 			compPool.submit(new Computer(idIncrementer));
 			idIncrementer++;
 		}
-		
+		//TODO: find out where the block below goes to have it print all finished computers
 		System.out.println("-----------------------------------------------------------------------------------");
 		Iterator<CompletedComputerEvent> finishedEventIterator = Resource.getFinishedEventsIterator();
 		while(finishedEventIterator.hasNext()){

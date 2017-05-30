@@ -3,8 +3,9 @@ package resources;
 public final class Clock {
 	private static double clockTime;
 	private static volatile Clock instance;
+	
 	private Clock(){
-		this.clockTime = 0.0;
+		clockTime = 0.0;
 	}
 	
 	public static Clock getInstance(){
@@ -22,7 +23,7 @@ public final class Clock {
 		clockTime += valToIncrement;
 	}
 	
-	public double getCurrentTime(){
+	public synchronized double getCurrentTime(){
 		return clockTime;
 	}
 }

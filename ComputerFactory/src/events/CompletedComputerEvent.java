@@ -1,5 +1,8 @@
 package events;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import models.Computer;
 
 public class CompletedComputerEvent {
@@ -31,8 +34,9 @@ public class CompletedComputerEvent {
 
 	@Override
 	public String toString() {
+		NumberFormat formatter = new DecimalFormat("#0.00");
 		return "computerID: " + getCOMPUTER_ID() + "[compEventType: " + compEventType.name()  + ", clockTime= "
-				+ clockTime + "]";
+				+ formatter.format(clockTime) + "]";
 	}
 	
 	

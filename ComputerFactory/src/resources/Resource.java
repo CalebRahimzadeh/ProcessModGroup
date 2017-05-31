@@ -14,16 +14,16 @@ public class Resource {
 	private static List<CompletedComputerEvent> finishedComputerEvents = new ArrayList<CompletedComputerEvent>();
 	private static boolean isNotFinished = false;
 	
+	public Resource() {
+		
+	}
+	
 	public static void addToCompletedEventList(CompletedComputerEvent completedEvent){
 		completedCompEvents.add(completedEvent);
 	}
 	
-	public static void incrementComputersCompleteCount(){
-		NUM_OF_COMPUTERS += 1;
-	}
-	
 	public static int getNumOfComputersCompleted(){
-		return NUM_OF_COMPUTERS;
+		return finishedComputerEvents.size();
 	}
 	
 	public static void addComputerFinishedEvent(CompletedComputerEvent finishedEvent){
@@ -40,6 +40,10 @@ public class Resource {
 	
 	public static void setIsFinished(boolean setIsFinished){
 		isNotFinished = setIsFinished;
+	}
+
+	public static void clearFinishedList(){
+		finishedComputerEvents.clear();
 	}
 	
 }

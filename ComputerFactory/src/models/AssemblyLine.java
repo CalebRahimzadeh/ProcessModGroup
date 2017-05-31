@@ -17,7 +17,6 @@ public class AssemblyLine implements Runnable{
 	
 	IFinishedSimListener listener;
 	public AssemblyLine(int limit){
-		
 		Employee emp = new Employee(5,2,1,2);
 		this.RUN_LIMIT = limit;
 		this.compPool = Executors.newFixedThreadPool(COMPS_TO_PROCESS_AT_A_TIME);
@@ -26,13 +25,13 @@ public class AssemblyLine implements Runnable{
 	@Override
 	public void run() {
 		//Generates a computer until clock limit is hit;
-		int idIncrementer = 0;
-			while(Clock.getInstance().getCurrentTime() < RUN_LIMIT){
-				compPool.submit(new Computer(idIncrementer));
-				idIncrementer++;
-			}
-		//TODO: find out where to call print all finished computers
-
+//		int idIncrementer = 0;
+//			while(Clock.getInstance().getCurrentTime() < RUN_LIMIT){
+//				compPool.submit(new Computer(idIncrementer));
+//				idIncrementer++;
+//			}
+//		//TODO: find out where to call print all finished computers
+//			printFinish();
 		
 	}
 

@@ -21,13 +21,7 @@ public class Main {
 				ComputerFactory compFact = new ComputerFactory();
 				compFact.startSimulation();
 				sum += compFact.getNumFinished();
-//				try {
-//					Thread.sleep(1000);
-					Resource.clearFinishedList();
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+				Resource.clearFinishedList();
 			}
 			totalAvg = sum / NUM_TO_ITERATE;
 			System.out.println("Average for 100 iterations: " + totalAvg);
@@ -36,8 +30,8 @@ public class Main {
 		}
 
 	}
-
+	// Answers
 	// 1. in 5 days and 8 hours on average we created 172~184 computers
-	// 2. We created 0 computers on average for 100 iterations
+	// 2  Finished Computer Average for 100 iterations: 175.95
 
 }

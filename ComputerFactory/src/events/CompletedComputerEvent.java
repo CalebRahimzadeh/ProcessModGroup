@@ -35,7 +35,7 @@ public class CompletedComputerEvent {
 	@Override
 	public String toString() {
 		NumberFormat formatter = new DecimalFormat("#0.00");
-		return "computerID: " + getCOMPUTER_ID() + "[compEventType: " + compEventType.name()  + ", clockTime= "
+		return "computerID: " + getCOMPUTER_ID() + " [compEventType: " + compEventType.name()  + ", clockTime= "
 				+ formatter.format(clockTime) + "]";
 	}
 	

@@ -5,17 +5,6 @@ public final class Clock {
 	private static volatile Clock instance;
 	
 	
-//	public static Clock getInstance(){
-//		if(instance == null){
-//			synchronized(Clock.class){
-//				if (instance == null) {
-//                    instance = new Clock();
-//                }
-//			}
-//		}
-//		return instance;
-//	}
-	
 	public static synchronized void incrementClock(double valToIncrement){
 		clockTime += valToIncrement;
 	}

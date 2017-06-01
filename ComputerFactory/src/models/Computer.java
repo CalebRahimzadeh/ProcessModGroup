@@ -11,13 +11,11 @@ import resources.Resource;
 public class Computer implements Runnable {
 	private final int id;
 	private final Queue<ComputerEvents> future;
-	private final double startConstructTime;
 
 	public Computer(int id) {
 		this.id = id;
 		this.future = new LinkedList<ComputerEvents>();
 		populateFutureList();
-		this.startConstructTime = Clock.getCurrentTime();
 	}
 
 	private void populateFutureList() {
@@ -29,7 +27,6 @@ public class Computer implements Runnable {
 
 	@Override
 	public void run() {
-		// might need to loop? idk might break it
 		while (future.size() != 0) {
 			try {
 					ComputerEvents present = future.poll();
@@ -51,7 +48,6 @@ public class Computer implements Runnable {
 		if (present.equals(ComputerEvents.FINISHED)) {
 			Resource.addToCompletedEventList(completedEvent);
 			Resource.addComputerFinishedEvent(completedEvent);
-			System.out.println("Comp: " + id + " build finished");
 		}
 	}
 

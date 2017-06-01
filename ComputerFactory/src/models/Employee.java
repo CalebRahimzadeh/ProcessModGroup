@@ -1,7 +1,5 @@
 package models;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 import events.ComputerEvents;
@@ -11,13 +9,14 @@ public class Employee {
 	private static Semaphore processorEmployees;
 	private static Semaphore hddEmployees;
 	private static Semaphore ramEmployees;
-	private static final int HOURLY_WAGE = 15;
+	private int totalNumOfEmps;
 	
 	public Employee(int moboEmpCnt, int processorEmpCnt, int hddEmpCnt, int ramEmpCnt) {
 		moboEmployees = new Semaphore(moboEmpCnt);
 		processorEmployees = new Semaphore(processorEmpCnt);
 		hddEmployees = new Semaphore(hddEmpCnt);
 		ramEmployees = new Semaphore(ramEmpCnt);
+		totalNumOfEmps = moboEmpCnt + processorEmpCnt + hddEmpCnt + ramEmpCnt;
 	}
 	
 	public static void ChooseEmployeeToAquire(ComputerEvents event) throws InterruptedException {
@@ -102,5 +101,9 @@ public class Employee {
 	public static void releaseRAMEmployee(){
 		ramEmployees.release();
 		System.out.println("Release RAM Employee.");
+	}
+	
+	public  int getTotalNumOfEmps(){
+		return totalNumOfEmps;
 	}
 }

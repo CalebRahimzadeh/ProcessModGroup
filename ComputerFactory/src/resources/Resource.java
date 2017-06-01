@@ -6,14 +6,14 @@ import java.util.Iterator;
 
 import events.CompletedComputerEvent;
 import events.ComputerEvents;
+import statistics.Statistic;
 
 public class Resource {
 	
-	private static int NUM_OF_COMPUTERS = 0;
 	private static List<CompletedComputerEvent> completedCompEvents = new ArrayList<CompletedComputerEvent>();
 	private static List<CompletedComputerEvent> finishedComputerEvents = new ArrayList<CompletedComputerEvent>();
 	private static boolean isNotFinished = false;
-	
+	private static List<Double> simsRevenueStats = new ArrayList<>();
 	public Resource() {
 		
 	}
@@ -46,4 +46,11 @@ public class Resource {
 		finishedComputerEvents.clear();
 	}
 	
+	public static void addRevenueToList(double revenue){
+		simsRevenueStats.add(revenue);
+	}
+	
+	public static Iterator<Double> getTotalRevenueIterator(){
+		return simsRevenueStats.iterator();
+	}
 }

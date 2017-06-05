@@ -20,9 +20,9 @@ public class ComputerFactory {
 	
 	public ComputerFactory() {
 		final int moboEmpNum = 5; 
-		final int processorEmpNum = 5;
-		final int hddEmpNum = 5; 
-		final int ramEmpNum = 5;
+		final int processorEmpNum = 2;
+		final int hddEmpNum = 1; 
+		final int ramEmpNum = 2;
 		
 		this.emp = new Employee(moboEmpNum, processorEmpNum, hddEmpNum, ramEmpNum);
 		this.assemblyLine = Executors.newFixedThreadPool(COMPS_TO_PROCESS_AT_A_TIME);

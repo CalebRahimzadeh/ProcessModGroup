@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import models.Fort;
 import models.PioneerFamily;
 import resources.SimulationResources;
 
@@ -37,7 +38,8 @@ public class SimulationController {
 	}
 	
 	public void generateForts() {
-		SimulationResources.addFort(new Fort(0, OREGON_DIST_IN_METERS));
+//		3 218 688 / 10 = 321 868.8
+		SimulationResources.addFort(new Fort(0, OREGON_DIST_IN_METERS)); // final fort
 		for (int i = 1; i < NUM_OF_FORTS - 1; i++) {
 			
 		}

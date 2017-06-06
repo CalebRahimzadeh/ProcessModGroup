@@ -6,7 +6,7 @@ public class HandCart implements ITransportMethods{
 	private int health = 100;
 	private int foodAmt = 0;
 	private double capacity = 200;
-	private final int SPEED = 223500;
+	private final int SPEED = 223500; //meters a week
 	
 	
 	@Override
@@ -48,7 +48,10 @@ public class HandCart implements ITransportMethods{
 	@Override
 	public int setHealth(int newHealth) {
 		// TODO Auto-generated method stub
-		return 0;
+		return newHealth;
 	}
-
+	@Override
+	public String toString(){
+		return "HandCart";
+	}
 }

@@ -8,4 +8,5 @@ public interface ITransportMethods {
 	public void setCapacity(double newCapacity);
 	public int getFoodAmt();
 	public void setFood(int newFoodAmt);
+	public String toString();
 }

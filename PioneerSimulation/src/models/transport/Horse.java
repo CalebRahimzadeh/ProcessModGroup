@@ -51,7 +51,11 @@ public class Horse implements ITransportMethods{
 	@Override
 	public int setHealth(int newHealth) {
 		// TODO Auto-generated method stub
-		return 0;
+		return newHealth;
+	}
+	@Override
+	public String toString(){
+		return "Horse";
 	}
 
 }

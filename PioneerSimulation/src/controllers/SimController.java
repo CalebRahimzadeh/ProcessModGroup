@@ -11,7 +11,7 @@ public class SimController {
 	private Fort fort;
 	public SimController(int numOfPioneers){
 		pioneers = new ArrayList<>();
-		this.fort = new Fort(10000);
+		this.fort = new Fort(10000, 1);
 		populatePioneers(numOfPioneers);
 	}
 	

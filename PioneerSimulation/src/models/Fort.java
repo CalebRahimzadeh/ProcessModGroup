@@ -18,7 +18,7 @@ public class Fort {
 	
 	public Fort(int foodCap, int blanketCapacity, int wagonParts, int docCnt){
 		this.foodCapacity = foodCap;
-		this.fortDoctors = new Semaphore(docCnt);
+		this.fortDoctors = new Semaphore(docCnt, true); //set to true to seet to fair
 		this.blanketCapacity = blanketCapacity;
 		this.wagonParts = wagonParts;
 	}

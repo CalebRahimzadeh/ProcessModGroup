@@ -9,6 +9,7 @@ import Events.PioneerEvent;
 import Tools.ClockTimeResources;
 
 public class Resource {
+	private static List<FortEvent> allEvents  = new ArrayList<>();
 	private static List<FortEvent> traveledEvents = new ArrayList<>();
 	private static List<FortEvent> suppliedEvents = new ArrayList<>();
 	private static List<FortEvent> enteredFortEvents = new ArrayList<>();
@@ -39,6 +40,7 @@ public class Resource {
 		default:
 			break;
 		}
+		allEvents.add(event);
 	}
 	public static Iterator<FortEvent> getTraveledEvents() {
 		return traveledEvents.iterator();
@@ -55,6 +57,11 @@ public class Resource {
 	public static Iterator<FortEvent> getDeathEvents() {
 		return deathEvents.iterator();
 	}
-	
+	public static Iterator<FortEvent> getTreatedEvents() {
+		return treatedEvents.iterator();
+	}
+	public static Iterator<FortEvent> getAllEvents() {
+		return allEvents.iterator();
+	}
 	
 }

@@ -60,6 +60,7 @@ public class Pioneer implements Runnable{
 			
 		} else {
 			this.currentState = PioneerEvent.DEATH;
+			System.out.println("DEATH OCCURED");
 		}
 		processEvent(currentState);
 		
@@ -68,7 +69,8 @@ public class Pioneer implements Runnable{
 		}
 	}
 	private void processEvent(PioneerEvent event){
-		stateProcessor = new FortEvent(id, event);
+		stateProcessor = new FortEvent(id, event, this.fort);
+		stateProcessor.calculateTime();
 		Resource.addEventToItsCorrespondingList(stateProcessor);
 	}
 	
@@ -76,9 +78,7 @@ public class Pioneer implements Runnable{
 		try {
 			if(fort.getFortDoctors().tryAcquire(pplCnt, TIMEOUT_MILLI, TimeUnit.MILLISECONDS)){
 				didRecieveHealthcare = true;	
-			} else {
-				System.out.println("TEST ");
-			}
+			} 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

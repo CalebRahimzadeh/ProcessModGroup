@@ -50,10 +50,6 @@ public class Fort {
 	public boolean canFixWagon() {
 		return wagonParts >= WAGON_PARTS_PER_FAMILY;
 	}
-	
-	public int getFoodStorage(){
-		return foodCapacity;
-	}
 
 	public static int getFoodperperson() {
 		return foodPerPerson;
@@ -82,6 +78,13 @@ public class Fort {
 	public Semaphore getFortDoctors() {
 		return fortDoctors;
 	}
+
+	@Override
+	public String toString() {
+		return "Fort [foodCapacity=" + foodCapacity + ", blanketCapacity=" + blanketCapacity + ", wagonParts="
+				+ wagonParts + ", fortDoctors=" + fortDoctors + "]";
+	}
+	
 	
 	
 }

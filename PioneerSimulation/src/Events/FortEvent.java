@@ -1,6 +1,7 @@
 package Events;
 
 import Tools.ClockTimeResources;
+import models.Fort;
 import resources.Resource;
 
 public class FortEvent {
@@ -8,10 +9,11 @@ public class FortEvent {
 	private int pioneerId;
 	private long duration;
 	private long clockTimestamp;
-	
-	public FortEvent(int pioneerId, PioneerEvent type){
+	private Fort fort;
+	public FortEvent(int pioneerId, PioneerEvent type, Fort fort){
 		this.setPioneerId(pioneerId);
 		this.setEventType(type);
+		this.fort = fort;
 	}
 	
 	//returns next event to go to
@@ -40,7 +42,6 @@ public class FortEvent {
 		
 		}
 		long valToIncrement =  Math.round(Math.log((1 - Math.random()) * meanTime));
-		System.out.println(valToIncrement);
 		ClockTimeResources.incrementClock(valToIncrement);
 		this.clockTimestamp = ClockTimeResources.getSimulationClock();
 	}
@@ -65,6 +66,15 @@ public class FortEvent {
 	
 	public long getClockTimeStamp(){
 		return clockTimestamp;
+	}
+
+	public Fort getFort(){
+		return fort;
+	}
+	@Override
+	public String toString() {
+		return "FortEvent [eventType=" + eventType + ", pioneerId=" + pioneerId + ", duration=" + duration
+				+ ", clockTimestamp=" + clockTimestamp + "/hour(s)]";
 	}
 	
 		

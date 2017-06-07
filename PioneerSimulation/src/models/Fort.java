@@ -1,12 +1,14 @@
 package models;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 
 public class Fort {
-	private static final int foodPerPerson = 20;
+//	private static final int foodPerPerson = 20;
 	private static final int BLANKETS_PER_PERSON = 1;
 	private static final int WAGON_PARTS_PER_FAMILY = 4;
+	private int foodPerPerson;
 	private int foodCapacity;
 	private int blanketCapacity;
 	private int wagonParts;
@@ -22,6 +24,7 @@ public class Fort {
 	}
 	
 	public int getFoodFromDepot(int pplCnt){
+		 int foodPerPerson = randInt(15, 37);
 		int foodReturned = 0;
 		if(pplCnt * foodPerPerson <= foodCapacity){
 			foodReturned = pplCnt * foodPerPerson;
@@ -49,10 +52,6 @@ public class Fort {
 	
 	public boolean canFixWagon() {
 		return wagonParts >= WAGON_PARTS_PER_FAMILY;
-	}
-
-	public static int getFoodperperson() {
-		return foodPerPerson;
 	}
 
 	public static int getBlanketsPerPerson() {
@@ -84,7 +83,11 @@ public class Fort {
 		return "Fort [foodCapacity=" + foodCapacity + ", blanketCapacity=" + blanketCapacity + ", wagonParts="
 				+ wagonParts + ", fortDoctors=" + fortDoctors + "]";
 	}
-	
+	private int randInt(int min, int max) {
+	    Random rand = new Random();
+	    int randomNum = rand.nextInt((max - min) + 1) + min;
+	    return randomNum;
+	}
 	
 	
 }

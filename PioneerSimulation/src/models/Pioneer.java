@@ -11,7 +11,7 @@ import States.PioneerStates;
 import resources.Resource;
 
 public class Pioneer implements Runnable{
-	private final static int TIMEOUT_MILLI = 1500;
+	private final static int TIMEOUT_MILLI = 5000;
 	private final int id;
 	private Fort fort;
 	private int foodSupply;
@@ -76,7 +76,10 @@ public class Pioneer implements Runnable{
 	
 	private void getMedicalCare(){
 		try {
-			if(fort.getFortDoctors().tryAcquire(pplCnt, TIMEOUT_MILLI, TimeUnit.MILLISECONDS)){
+//			fort.getFortDoctors().tryAcquire(TIMEOUT_MILLI, TimeUnit.MILLISECONDS)
+			boolean isTreated = false;
+			while(fort.getFortDoctors().tryAcquire(TIMEOUT_MILLI, TimeUnit.MILLISECONDS)){
+//				isTreated =fort.getFortDoctors().tryAcquire(1, TIMEOUT_MILLI, TimeUnit.MILLISECONDS);
 				didRecieveHealthcare = true;	
 			} 
 		} catch (InterruptedException e) {

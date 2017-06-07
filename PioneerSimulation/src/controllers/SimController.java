@@ -44,5 +44,9 @@ public class SimController {
 			}
 			System.out.println("pioneer food: " + pioneer.getFoodSupply());
 		}
+		
+		for (Pioneer pioneer : pioneers) {
+			System.out.println(pioneer.toString());
+		}
 	}
 }

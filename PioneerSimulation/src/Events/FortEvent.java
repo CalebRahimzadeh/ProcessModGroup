@@ -1,19 +1,26 @@
 package Events;
 
 import Tools.ClockTimeResources;
+import resources.Resource;
 
 public class FortEvent {
 	private PioneerEvent eventType;
 	private int pioneerId;
 	private long duration;
+	private long clockTimestamp;
 	
 	public FortEvent(int pioneerId, PioneerEvent type){
 		this.setPioneerId(pioneerId);
 		this.setEventType(type);
 	}
-	public long calculateDuration(){
+	
+	//returns next event to go to
+	public void calculateTime(){
 		long meanTime = -1;
 		switch(eventType){
+		case TREATED_PARTY:
+			meanTime = ClockTimeResources.getMeanTreatTime();
+			break;
 		case DEPARTED:
 			meanTime = ClockTimeResources.getMeanLeavingTime();
 			break;
@@ -26,11 +33,16 @@ public class FortEvent {
 		case TRAVELED:
 			meanTime = ClockTimeResources.getMeanTravelTime();
 			break;
+		case DEATH:
+			meanTime = 1000;
 		default:
 			break;
 		
 		}
-		return Math.round(Math.log((1 - Math.random()) * meanTime));
+		long valToIncrement =  Math.round(Math.log((1 - Math.random()) * meanTime));
+		System.out.println(valToIncrement);
+		ClockTimeResources.incrementClock(valToIncrement);
+		this.clockTimestamp = ClockTimeResources.getSimulationClock();
 	}
 	public PioneerEvent getEventType() {
 		return eventType;
@@ -49,6 +61,10 @@ public class FortEvent {
 	}
 	public void setDuration(long duration) {
 		this.duration = duration;
+	}
+	
+	public long getClockTimeStamp(){
+		return clockTimestamp;
 	}
 	
 		

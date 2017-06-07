@@ -5,7 +5,10 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import Events.FortEvent;
+import Events.PioneerEvent;
 import States.PioneerStates;
+import resources.Resource;
 
 public class Pioneer implements Runnable{
 	private final static int TIMEOUT_MILLI = 1500;
@@ -17,7 +20,8 @@ public class Pioneer implements Runnable{
 	private boolean didRecieveFood = false;
 	private boolean didRecieveBlankets = false;
 	private boolean didRecieveHealthcare = false;
-	
+	private FortEvent stateProcessor;
+	private PioneerEvent currentState;
 	private int pplCnt;
 	
 	public Pioneer(int id, Fort fort){
@@ -25,6 +29,7 @@ public class Pioneer implements Runnable{
 		this.fort = fort;
 		this.foodSupply = 0;
 		this.pplCnt = 5;
+		this.currentState = PioneerEvent.TRAVELED;
 		
 	}
 	
@@ -36,24 +41,44 @@ public class Pioneer implements Runnable{
 
 	@Override
 	public void run() {
+		
+		processEvent(currentState);
+		this.currentState = PioneerEvent.ENTEREDFORT;
+		processEvent(currentState);
 		recieveFood();
 		recieveBlankets();
 		getParts();
+		if(didRecieveFood || didRecieveBlankets || isWagonDamage){
+			this.currentState = PioneerEvent.GOTSUPPLIES;
+			processEvent(currentState);
+		}
+		
 		getMedicalCare();
 		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if(didRecieveHealthcare) {
+			this.currentState = PioneerEvent.TREATED_PARTY;
+			
+		} else {
+			this.currentState = PioneerEvent.DEATH;
 		}
+		processEvent(currentState);
+		
 		synchronized(fort){
 			fort.notifyAll();
 		}
 	}
+	private void processEvent(PioneerEvent event){
+		stateProcessor = new FortEvent(id, event);
+		Resource.addEventToItsCorrespondingList(stateProcessor);
+	}
 	
 	private void getMedicalCare(){
 		try {
-			fort.getFortDoctors().tryAcquire(pplCnt, TIMEOUT_MILLI, TimeUnit.MILLISECONDS);
+			if(fort.getFortDoctors().tryAcquire(pplCnt, TIMEOUT_MILLI, TimeUnit.MILLISECONDS)){
+				didRecieveHealthcare = true;	
+			} else {
+				System.out.println("TEST ");
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -149,5 +174,14 @@ public class Pioneer implements Runnable{
 	public void setFoodSupply(int foodSupply) {
 		this.foodSupply = foodSupply;
 	}
+
+	@Override
+	public String toString() {
+		return "Pioneer [id=" + id + ", fort=" + fort + ", foodSupply=" + foodSupply + ", blanketSupply="
+				+ blanketSupply + ", isWagonDamage=" + isWagonDamage + ", didRecieveFood=" + didRecieveFood
+				+ ", didRecieveBlankets=" + didRecieveBlankets + ", didRecieveHealthcare=" + didRecieveHealthcare
+				+ ", stateProcessor=" + stateProcessor + ", currentState=" + currentState + ", pplCnt=" + pplCnt + "]";
+	}
+	
 	
 }

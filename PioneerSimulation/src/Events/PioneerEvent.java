@@ -4,6 +4,8 @@ public enum PioneerEvent {
 	TRAVELED,
 	ENTEREDFORT,
 	GOTSUPPLIES,
-	DEPARTED
+	TREATED_PARTY,
+	DEPARTED, 
+	DEATH;
 
 }
